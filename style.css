@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+    padding: 2.5rem;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: whitesmoke !important;
+}
+
+.title{
+    font-size:2.5rem;
+    height:fit-content;
+}
+
+.content-container{
+    display:block;
+    max-width:55rem;
+}
