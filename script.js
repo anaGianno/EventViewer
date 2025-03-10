@@ -6,31 +6,42 @@ let ajaxRequest = (method, url,data, callback) => {
 		request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 	}
 
-	request.onload = function(){
-        let response = request.responseText;
-        callback(response);
+	if(url == "getAllEvents.php"){
+		request.onload = function(){
+			let response = request.responseText;
+			callback(response,"allEvents");
+		}
+		request.send();
+	} else if(url == "getEventInfo.php"){
+		request.onload = function(){
+			let response = request.responseText;
+			console.log("Response Text:", response);
+			callback(response,"eventInfo");
+		}
+		request.send(data);
 	}
 	
-	if(method == "POST"){
-		request.send(data);
-	} else{request.send();}
-	
 }
 
-let getDataAjax = () => {
+let processResult = (response,id) => {
+	let data = document.getElementById(id);
+	console.log("Response:", response);
+	data.innerHTML = response;
+}
+
+let getAllEvents = () => {
     let url = "getAllEvents.php";
     ajaxRequest("GET", url,"",processResult);
-
 }
 
-let processResult = (response) => {
-
-	let data = document.getElementById("output");
-	data.innerHTML = response;
-        
+let getEventInfo = (eventId) => {
+    let url = "getEventInfo.php";
+	let data = "id="+eventId;
+	console.log("Event id:", eventId);
+    ajaxRequest("POST", url,data,processResult);
 }
 
 window.onload = function() {
-    getDataAjax();
+    getAllEvents();
 };
 

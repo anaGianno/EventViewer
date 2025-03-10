@@ -1,9 +1,9 @@
 body {
     margin: 0;
-    padding: 2.5rem;
+    padding: 2rem;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: whitesmoke !important;
+    background-color: gainsboro !important;
 }
 
 .title{
@@ -12,6 +12,20 @@ body {
 }
 
 .content-container{
-    display:block;
+    display:flex;
+    width:fit-content;
+    /* background-color:skyblue !important; */
+}
+
+.list-group-container{
     max-width:55rem;
+    width:55rem;
+}
+
+.info-container{
+    display:inline-block;
+    max-width:55rem;
+    width:55rem;
+    padding:2rem;
+    background-color: pink !important;
 }
