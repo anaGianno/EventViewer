@@ -9,7 +9,18 @@ body {
 .title{
     font-size:2.5rem;
     height:fit-content;
+    width:fit-content;
+    display:inline;
 }
+
+.refresh-button{
+    margin-left:0.75rem;
+    margin-bottom:1.25rem;
+    padding:0 !important;
+    width:2rem;
+    height:2rem;
+}
+ 
 
 .content-container{
     display:flex;
@@ -26,11 +37,18 @@ body {
     display:inline-block;
     max-width:55rem;
     width:55rem;
-    background-color: pink !important;
 }
 
 .card{
     max-width:55rem !important;
     width:55rem !important;
     height:100% !important;
+}
+
+.update-notes-container{
+    height:1.5rem;
+}
+
+.weather-container{
+    padding-top:1rem !important;
 }

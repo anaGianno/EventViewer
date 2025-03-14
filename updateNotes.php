@@ -9,3 +9,9 @@
   
   $result = $con->query($query);
 
+
+  if($result != FALSE) 
+  {
+        echo "<p>Notes updated!</p>";
+  }
+

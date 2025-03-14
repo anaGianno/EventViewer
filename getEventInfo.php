@@ -4,13 +4,14 @@
   
   require_once('dbConnect.php');
     
+  // get event info using id
   $query = "SELECT * FROM events WHERE id = '$id'";
 
   $result = $con->query($query);
 
-  //if we get data back display it using a table
   if($result != FALSE) 
   {
+      // display all event info
       while($row = $result->fetch()) 
       {
         echo "<h5 class='card-title'>{$row['name']}</h5>";
@@ -24,11 +25,11 @@
           <textarea class='form-control' aria-label='Notes:' id='notes'>{$row['notes']}</textarea>
           <button type='button' class='btn btn-dark' onclick='updateNotes({$row['id']})'>Update Notes</button>
         </div>
-        <button type='button' class='btn btn-dark' onclick='getWeather({$row['lon_lat']})'>Get Weather</button>
+        <div class ='update-notes-container' id ='updateNotes'></div>
+        <button type='button' class='btn btn-dark' onclick='getWeather({$row['lon_lat']})'>Get Weather</button><br>
+        <div class ='weather-container' id ='weather'></div>
         </p>";
       }
   }
-  
-// show update visually
-// add refresh that clears right side and loads using ajax
+
 
