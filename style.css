@@ -26,6 +26,11 @@ body {
     display:inline-block;
     max-width:55rem;
     width:55rem;
-    padding:2rem;
     background-color: pink !important;
+}
+
+.card{
+    max-width:55rem !important;
+    width:55rem !important;
+    height:100% !important;
 }

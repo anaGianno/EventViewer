@@ -15,17 +15,18 @@ let ajaxRequest = (method, url,data, callback) => {
 	} else if(url == "getEventInfo.php"){
 		request.onload = function(){
 			let response = request.responseText;
-			console.log("Response Text:", response);
 			callback(response,"eventInfo");
 		}
 		request.send(data);
+	}else if(url == "updateNotes.php"){
+		request.send(data);
+		console.log("Notes updated"); 
 	}
 	
 }
 
 let processResult = (response,id) => {
 	let data = document.getElementById(id);
-	console.log("Response:", response);
 	data.innerHTML = response;
 }
 
@@ -37,11 +38,27 @@ let getAllEvents = () => {
 let getEventInfo = (eventId) => {
     let url = "getEventInfo.php";
 	let data = "id="+eventId;
-	console.log("Event id:", eventId);
+    ajaxRequest("POST", url,data,processResult);
+}
+
+let updateNotes = (eventId) => {
+    let url = "updateNotes.php";
+	let notes = document.getElementById("notes").value;
+	let data = "notes="+notes+"&id="+eventId;
     ajaxRequest("POST", url,data,processResult);
 }
 
 window.onload = function() {
     getAllEvents();
 };
+
+let getWeather = (lat, long) =>{
+	fetch("https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+long+"&appid=713be68449f49eb599ea18a84b4722a7")
+	.then(response => response.json())
+	.then(displayWeather);
+}
+
+let displayWeather = (response) =>{
+	console.log("Description: " +response.weather[0].description + " Temperature: " + response.main.temp + " Humidity: " + response.main.humidity);
+}
 

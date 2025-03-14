@@ -4,7 +4,7 @@
   
   require_once('dbConnect.php');
     
-  $query = "Select * from events where id = $id";
+  $query = "SELECT * FROM events WHERE id = '$id'";
 
   $result = $con->query($query);
 
@@ -13,20 +13,22 @@
   {
       while($row = $result->fetch()) 
       {
-        echo $row['name'] . " " ;
-        echo $row['category'] . " " ;
-        echo $row['month'] . " " ;
-        echo $row['day'] . " " ;
-        echo $row['time'] . " " ;
-        echo $row['cost'] . " " ;
-        echo $row['location'] . " " ;
-        echo $row['id'] . " " ;
-        echo $row['tagged'] . " " ;
-        echo $row['lon_lat'] . " " ;
-        echo $row['notes'] . " " ;
-        echo "<br>";
+        echo "<h5 class='card-title'>{$row['name']}</h5>";
+        echo "<h6 class='card-subtitle mb-2 text-body-secondary'>{$row['category']}</h6>";
+        echo "<p class='card-text'>Cost: {$row['cost']}<br>
+        Location: {$row['location']} [{$row['lon_lat']}]<br>
+        Date: {$row['month']} {$row['day']} {$row['time']}<br>
+        ID: {$row['id']}<br>Tagged: {$row['tagged']}<br>
+        <div class='input-group'>
+          <span class='input-group-text'>Notes:</span>
+          <textarea class='form-control' aria-label='Notes:' id='notes'>{$row['notes']}</textarea>
+          <button type='button' class='btn btn-dark' onclick='updateNotes({$row['id']})'>Update Notes</button>
+        </div>
+        <button type='button' class='btn btn-dark' onclick='getWeather({$row['lon_lat']})'>Get Weather</button>
+        </p>";
       }
   }
-
   
+// show update visually
+// add refresh that clears right side and loads using ajax
 

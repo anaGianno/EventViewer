@@ -2,7 +2,7 @@
   
   require_once('dbConnect.php');
     
-  $query = "Select * from events";
+  $query = "SELECT * FROM events";
 
   $result = $con->query($query);
 
